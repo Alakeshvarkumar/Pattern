@@ -1,0 +1,254 @@
+
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>med</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="med" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="med" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="med" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","headline":"med","name":"med","url":"https://maniyashi0615-dotcom.github.io/med/"}</script>
+
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="#">Med</a></h1>
+      
+
+    
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Patient Surgery History</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c7be5;
+    }
+
+    .patient-card, .surgery-card {
+        background: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .row {
+        margin: 8px 0;
+    }
+
+    .label {
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background: #eef4ff;
+    }
+
+    button {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .edit-btn {
+        background: #ffc107;
+    }
+
+    .save-btn {
+        background: #28a745;
+        color: white;
+        display: none;
+    }
+
+    .add-btn {
+        background: #2c7be5;
+        color: white;
+        margin-top: 15px;
+    }
+
+    input {
+        width: 100%;
+        padding: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Patient Surgery History</h1>
+
+    <!-- Patient Details -->
+    <div class="patient-card">
+        <div class="row"><span class="label">Patient ID:</span> P-22333</div>
+        <div class="row"><span class="label">Patient Name:</span> ThamilSelvan </div>
+        <div class="row"><span class="label">Age:</span> 28</div>
+        <div class="row"><span class="label">Hospital:</span> KMC Health and Care, Chennai</div>
+    </div>
+
+    <!-- Surgery History -->
+    <div class="surgery-card">
+        <h3>Past &amp; Current Surgeries</h3>
+
+        <table id="surgeryTable">
+            <tr>
+                <th>Type</th>
+                <th>Reason</th>
+                <th>Doctor</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            <!-- Surgery 1 -->
+            <tr>
+                <td>Cardiac Surgery</td>
+                <td>Minor Heart Attack</td>
+                <td>Dr. Alakesh</td>
+                <td>09:30</td>
+                <td>11:57</td>
+                <td>Recovered</td>
+                <td>
+                    <button class="edit-btn" onclick="editRow(this)">Edit</button>
+                    <button class="save-btn" onclick="saveRow(this)">Save</button>
+                </td>
+            </tr>
+
+            <!-- Surgery 2 -->
+            <tr>
+                <td>Angioplasty</td>
+                <td>Blocked Artery</td>
+                <td>Dr. Nithya</td>
+                <td>10:00</td>
+                <td>11:15</td>
+                <td>Recovered</td>
+                <td>
+                    <button class="edit-btn" onclick="editRow(this)">Edit</button>
+                    <button class="save-btn" onclick="saveRow(this)">Save</button>
+                </td>
+            </tr>
+
+            <!-- Surgery 3 -->
+            <tr>
+                <td>Appendix</td>
+                <td>Appendicitis</td>
+                <td>Dr. Raghav</td>
+                <td>08:45</td>
+                <td>09:30</td>
+                <td>Recovered</td>
+                <td>
+                    <button class="edit-btn" onclick="editRow(this)">Edit</button>
+                    <button class="save-btn" onclick="saveRow(this)">Save</button>
+                </td>
+            </tr>
+
+            <!-- Surgery 4 -->
+            <tr>
+                <td>Knee Surgery</td>
+                <td>Accident Injury</td>
+                <td>Dr. Rajesh</td>
+                <td>07:30</td>
+                <td>09:00</td>
+                <td>Under Observation</td>
+                <td>
+                    <button class="edit-btn" onclick="editRow(this)">Edit</button>
+                    <button class="save-btn" onclick="saveRow(this)">Save</button>
+                </td>
+            </tr>
+        </table>
+
+        <button class="add-btn" onclick="addSurgery()">+ Add New Surgery</button>
+    </div>
+</div>
+
+<script>
+function editRow(btn) {
+    let row = btn.parentElement.parentElement;
+    let cells = row.querySelectorAll("td");
+
+    for (let i = 0; i < cells.length - 1; i++) {
+        let value = cells[i].innerText;
+        cells[i].innerHTML = `<input value="${value}">`;
+    }
+
+    btn.style.display = "none";
+    btn.nextElementSibling.style.display = "inline-block";
+}
+
+function saveRow(btn) {
+    let row = btn.parentElement.parentElement;
+    let inputs = row.querySelectorAll("input");
+
+    inputs.forEach(input => {
+        let td = input.parentElement;
+        td.innerText = input.value;
+    });
+
+    btn.style.display = "none";
+    btn.previousElementSibling.style.display = "inline-block";
+}
+
+function addSurgery() {
+    let table = document.getElementById("surgeryTable");
+    let row = table.insertRow(-1);
+
+    let fields = ["", "", "", "", "", ""];
+    fields.forEach(value => {
+        let cell = row.insertCell();
+        cell.innerHTML = `<input>`;
+    });
+
+    let actionCell = row.insertCell();
+    actionCell.innerHTML = `
+        <button class="save-btn" style="display:inline-block" onclick="saveRow(this)">Save</button>
+    `;
+}
+</script>
+
+</body>
+</html>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
