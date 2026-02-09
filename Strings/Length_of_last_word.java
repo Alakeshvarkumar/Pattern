@@ -4,7 +4,7 @@ class Length_of_last_word {
         int i = s.length() - 1;
         int length = 0;
 
-        // remove trailing spaces by using this code snippet or trim fn
+        // {remove trailing spaces by using this code snippet or trim fn}
         // while (i >= 0 && s.charAt(i) == ' ') {
         //     i--;
         // }
